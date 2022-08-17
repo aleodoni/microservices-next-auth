@@ -7,7 +7,7 @@ import path from 'node:path';
 import { DatabaseModule } from '../database/database.module';
 import { ProductsService } from '../services/products.service';
 import { ProductsResolver } from './graphql/resolvers/products.resolver';
-import { TestController } from './test.controller';
+import { TestResolver } from './test.resolver';
 
 @Module({
   imports: [
@@ -18,7 +18,6 @@ import { TestController } from './test.controller';
       autoSchemaFile: path.resolve(process.cwd(), 'src/schema.gql'),
     }),
   ],
-  providers: [ProductsResolver, ProductsService],
-  controllers: [TestController],
+  providers: [ProductsResolver, ProductsService, TestResolver],
 })
 export class HttpModule {}

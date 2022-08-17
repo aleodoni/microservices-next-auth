@@ -21,10 +21,12 @@ export class AuthorizationGuard implements CanActivate {
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    // Quando não usa o graphql, req e res devem ser pegos daqui
     // const httpContext = context.switchToHttp();
     // const req = httpContext.getRequest();
     // const res = httpContext.getResponse();
 
+    // Quando usar o graphql, req e res vem de outro lugar
     const { req, res } = GqlExecutionContext.create(context).getContext();
 
     const checkJWT = promisify(
